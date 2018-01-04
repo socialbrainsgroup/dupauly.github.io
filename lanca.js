@@ -15,8 +15,18 @@ scene.y=150
 scene.autoscale=0
 scene.range= vec(120,120,120)
 scene.center = vec(0,40,0)
-ball = sphere(pos=vec(0,2,0), radius=2, color=color.red)
-ground = cylinder(pos=vec(0,-2,0),radius=100,axis=(0,2,0))
+ball = sphere(pos=vector(2,1,0), radius=0.5, color=color.cyan)
+ball = sphere( pos=vec(0,2,0), radius=0.5, color=color.red)
+//rod  = cylinder()
+//rod.pos  =vec(0,1,2)
+//rod.axis = vec(1,0,0)
+//rod.size = vec(5,1,1)
+ground = cylinder()
+ground.pos = vec(0,-2,0)
+ground.axis = (0,2,0)
+ground.size = vec(100,2,100)
+//ring( pos=vec(3,0,1), axis=vec(0,1,0), 
+      //size=vec(0.2,1,1) )
 posalvo1 = vec(50,50,0)
 posalvo2 = vec(50,18,0)
 posalvo3 = vec(50,50,50)
@@ -28,13 +38,15 @@ posalvo8 = vec(-200,-50,50)
 print ("O objetivo é acertar dentro do anel.")
 qualalvo = input("Qual alvo devo mostrar(1, 2, 3, 4, 5, 6 ou 7)? ")
 if (qualalvo == 1){
-    alvo1 = ring(pos=posalvo1, axis=(0,1,0), radius=20, thickness=2)
-    label(pos=vec(50,0,0),text='50m')
+    alvo1 = ring(pos=posalvo1, axis=vec(0,1,0), size=vec(3,3,3))
+    //text(text='My text is\ngreen', align='center', depth=-0.3, color=color.green)
+    text(text='50m'(pos=vec(50,0,0)))
     label(pos=vec(0,50,0),text='50m')
     label(pos=vec(0,0,50),text='50m')
 }
 if (qualalvo == 2){
-    alvo2 = ring(pos=posalvo2, axis=vec(1,0,0), radius=15, thickness=2)
+    //ring(pos=vector(.2,0,0), radius=.6, axis=vector(1,0,0), thickness=0.12, color=color.gray(0.4))
+    alvo2 = ring(pos=posalvo2, radius= 25, axis=vec(1,0,0), thickness=2)
 }
 if (qualalvo == 3){
     alvo3 = ring(pos=posalvo3, axis=vec(0.5,0,0.5), radius=15, thickness=2)
@@ -99,37 +111,37 @@ path=curve( color=color.yellow)
 // Main Program
 //------------------------------------------------
 function main() {
-    Finished= False
-    while (Finished=False){
-         rate(100)   //no more than 100/sec
-         seconds += dt
+    Finished = false;
+    while (Finished=false){
+         rate(100);   //no more than 100/sec
+         seconds += dt;
          //position equation:  y(t) = y0 + v0*t + .5*a*t**2
          //velocity: vy=v0y-a*t
-         ballY = 2 + velocityY*seconds - .5*gravity*seconds**2
+         ballY = 2 + velocityY*seconds - Math.pow(5*gravity*seconds);
          //define altura maxima:
-         while (hmax< ballY:){
-             hmax= ballY
+         while (hmax< ballY){
+             hmax= ballY;
          }
-         ballX = velocityX*seconds
-         ballZ = velocityZ*seconds
-         ball.pos=vec(ballX,ballY,ballZ)
-         path.append(pos=vec(ballX,ballY,ballZ))
-         v.y= velocityY - gravity*seconds
-         pointer.pos=ball.pos
-         pointer.axis=v
+         ballX = velocityX*seconds;
+         ballZ = velocityZ*seconds;
+         ball.pos=vec(ballX,ballY,ballZ);
+         path.append(pos=vec(ballX,ballY,ballZ));
+         v.y= velocityY - gravity*seconds;
+         pointer.pos=ball.pos;
+         pointer.axis=v;
      }
 //------------------------------------------------
 // graphics & conclusion
 //------------------------------------------------
          if (scene.mouse.events){
-            pause()
+            pause();
         }
-         if (ballY -2 <= 0){
-            Finished = True
-            print ("tempo de voo: " +str(seconds) + "s")
-            print ("altura máxima: %0.2f m" % (hmax))
-            print ("viajou %0.2f m em x" % (ballX))
-            print ("viajou %0.2f m em z" % (ballZ))
+        if (ballY -2 <= 0){
+            Finished = true;
+            //print ("tempo de voo: " +str(seconds) + "s")
+            //print ("altura máxima: %0.2f m" % (hmax))
+            //print ("viajou %0.2f m em x" % (ballX))
+            //print ("viajou %0.2f m em z" % (ballZ))
         }
         //if qualalvo ==8 and ballY<= -60:
             //Finished = True
