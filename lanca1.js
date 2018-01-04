@@ -98,9 +98,8 @@ path=curve( color=color.yellow)
 //------------------------------------------------
 // Main Program
 //------------------------------------------------
-function main() {
     Finished= False
-    while (Finished=False){
+    while (not Finished){
          rate(100)   //no more than 100/sec
          seconds += dt
          //position equation:  y(t) = y0 + v0*t + .5*a*t**2
@@ -137,4 +136,3 @@ function main() {
             //print "altura maxima: " +str(hmax)+ "m"
             //print "viajou " +str(ballX) +"m em x"
             //print "viajou " +str(ballZ) +"m em z"
-}

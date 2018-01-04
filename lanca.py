@@ -2,6 +2,7 @@
 #launchring.py
 #by daniel pauly
 #import vpython
+#from visual.graph import *
 #this program simulates projectile motion on earth's superficial gravity
 #--------------------------------------------------
 # Scene attributes and objects
@@ -121,8 +122,8 @@ def main():
             Finished = True
             print "tempo de voo: " +str(seconds) + "s"
             print "altura máxima: %0.2f m" % (hmax)
-            #print "viajou %0.2f m em x" % (ballX)
-            #print "viajou %0.2f m em z" % (ballZ)
+            print "viajou %0.2f m em x" % (ballX)
+            print "viajou %0.2f m em z" % (ballZ)
         #if qualalvo ==8 and ballY<= -60:
             #Finished = True
             #print "tempo de voo: " +str(seconds) + "s"
